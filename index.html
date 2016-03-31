@@ -10,7 +10,7 @@
 <body>
     <div ng-app="app" class="app">
         <div ng-controller="FormController as survey">
-            <form name="form" ng-submit="submit()">
+            <form name="form" ng-submit="survey.submit()">
                 <div>
                     Title:
                     <input type="text" name="title" ng-maxlength="100" required="required" ng-model="survey.title" />
@@ -52,7 +52,7 @@
                 </div>
                 <input type="submit" id="submit" value="Submit" />
             </form>
-            <button ng-click="add()">New Question</button>
+            <button ng-click="survey.add()">New Question</button>
         </div>
         <pre>questions={{questions}}</pre>
         <!-- <pre>{{ form | json }}</pre> -->
