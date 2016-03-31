@@ -47,18 +47,14 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    Question:
-                    <input type="text" name="question" required="required" ng-model="survey.question" />
-                    <div ng-if="form.question.$touched">
-                        <div ng-if="form.question.$error.required">
-                            A question is required!
-                        </div>
-                    </div>
+                <div ng-repeat="question in questions">
+                    <input type="text" ng-model="question.q">
                 </div>
-                <pre>{{ form | json }}</pre>
-            </form>
+                <button ng-click="add()">New Question</button>
         </div>
+        <!-- <pre>{{ form | json }}</pre> -->
+        </form>
+    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/app/app.js"></script>
