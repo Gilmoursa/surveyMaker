@@ -11,13 +11,13 @@
     <div ng-app="app" class="app">
         <div ng-controller="FormController as survey">
             <form name="form">
-                 <!-- <pre>{{ form | json }}</pre> -->
+                <!-- <pre>{{ form | json }}</pre> -->
                 <div>
                     Title:
                     <input
                         type="text"
                         name="title"
-                        maxlength="100"
+						ng-maxlength="100"
                         required="required"
                         ng-model="survey.title" />
                     <div ng-if="form.title.$touched">
@@ -32,9 +32,9 @@
                 <div>
                     Point Value: 
                     <input
-                        type="pointValue"
+                        type="number"
                         name="pointValue"
-                        min=0
+                        ng-min="0"
                         required="required"
                         ng-model="survey.pointValue" />
 
@@ -50,9 +50,9 @@
                 <div>
                     Description: 
                     <input
-                        type="description"
+                        type="text"
                         name="description"
-                        maxlength="500"
+                        ng-maxlength="500"
                         required="required"
                         ng-model="survey.description" />
 
