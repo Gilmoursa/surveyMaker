@@ -10,7 +10,7 @@
 <body>
     <div ng-app="app" class="app">
         <div ng-controller="FormController as survey">
-            <form name="form">
+            <form name="form" ng-submit="submit()">
                 <div>
                     Title:
                     <input type="text" name="title" ng-maxlength="100" required="required" ng-model="survey.title" />
@@ -50,13 +50,12 @@
                 <div ng-repeat="question in questions">
                     <input type="text" ng-model="question.q">
                 </div>
-                <button ng-click="add()">New Question</button>
-                <input type="submit" id="submit" value="Submit" ng-submit="submit()" />
+                <input type="submit" id="submit" value="Submit" />
+            </form>
+            <button ng-click="add()">New Question</button>
         </div>
         <pre>questions={{questions}}</pre>
         <!-- <pre>{{ form | json }}</pre> -->
-        </form>
-    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/app/app.js"></script>
