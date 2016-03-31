@@ -1,15 +1,15 @@
-function FormController($scope) {
-    $scope.questions = [];
+function FormController(this) {
+    this.questions = [];
 
-    $scope.add = function() {
-        $scope.questions.push({
+    this.add = function() {
+        this.questions.push({
             text: ""
         });
     };
-     $scope.submit = function() {
-        if ($scope.questions) {
-          $scope.questions.push(this.questions);
-          $scope.questions = '';
+     this.submit = function() {
+        if (this.questions) {
+          this.questions.push(this.questions);
+          this.questions = '';
         }
       };
 }
