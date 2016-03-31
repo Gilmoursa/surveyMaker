@@ -51,7 +51,9 @@
                     <input type="text" ng-model="question.q">
                 </div>
                 <button ng-click="add()">New Question</button>
+                <input type="submit" id="submit" value="Submit" ng-submit="submit()" />
         </div>
+        <pre>questions={{questions}}</pre>
         <!-- <pre>{{ form | json }}</pre> -->
         </form>
     </div>
