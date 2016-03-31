@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Survey Maker!</title>
+</head>
+
+<body>
+    <div ng-app="app" class="app">
+        <div ng-controller="FormController as survey">
+            <form name="form">
+                <pre>{{ form | json }}</pre>
+                <div>
+                    Title:
+                    <input
+                        type="text"
+                        name="title"
+                        maxlength="100"
+                        required="required"
+                        ng-model="survey.title" />
+                    <div ng-if="form.title.$touched">
+                        <div ng-if="form.title.$error.required">
+                            A title is required!
+                        </div>
+                        <div ng-if="form.title.$error.maxlength">
+                            Your title must be less than 100 characters!
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    Point Value: 
+                    <input
+                        type="pointValue"
+                        name="pointValue"
+                        min=0
+                        required="required"
+                        ng-model="survey.pointValue" />
+
+                    <div ng-if="form.pointValue.$touched">
+                        <div ng-if="form.pointValue.$error.required">
+                            A point value is required!
+                        </div>
+                        <div ng-if="form.pointValue.$error.min">
+                            The point value must be greater than 0!
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    Description: 
+                    <input
+                        type="description"
+                        name="description"
+                        maxlength="500"
+                        required="required"
+                        ng-model="survey.description" />
+
+                    <div ng-if="form.description.$touched">
+                        <div ng-if="form.description.$error.required">
+                            A description is required!
+                        </div>
+                        <div ng-if="form.description.$error.maxlength">
+                            A description must be less than 500 characters!
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/controllers/FormController.js"></script>
+
+</body>
+</html>
