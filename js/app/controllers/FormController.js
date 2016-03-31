@@ -3,8 +3,6 @@ function FormController($scope) {
 
     $scope.add = function() {
         $scope.questions.push({
-            question: "",
-            questionPlaceholder: "foo",
             text: ""
         });
     };
