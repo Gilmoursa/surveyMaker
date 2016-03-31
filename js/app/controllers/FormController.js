@@ -6,6 +6,12 @@ function FormController($scope) {
             text: ""
         });
     };
+     $scope.submit = function() {
+        if ($scope.questions) {
+          $scope.questions.push(this.questions);
+          $scope.questions = '';
+        }
+      };
 }
 
 angular
