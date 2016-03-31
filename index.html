@@ -4,58 +4,74 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title>Survey Maker!</title>
 </head>
 
 <body>
+<div class="container">
+<h1>Welcome To Survey Maker</h1>
+<hr>
+<p>Make surveys like a pro! Confound your enemies and impress your friends!</p>
     <div ng-app="app" class="app">
-        <div ng-controller="FormController as survey">
-            <form name="form" ng-submit="survey.submit()">
+        <div ng-controller="FormController as vm">
+            <form name="form" ng-submit="vm.submit()">
                 <div>
-                    Title:
-                    <input type="text" name="title" ng-maxlength="100" required="required" ng-model="survey.title" />
+                    <p>Title:</p>
+                    <input type="text" name="title" ng-maxlength="100" required="required" ng-model="vm.survey.title" />
                     <div ng-if="form.title.$touched">
                         <div ng-if="form.title.$error.required">
-                            A title is required!
+                            <div class="alert alert-danger" role="alert">A title is required!</div>
                         </div>
                         <div ng-if="form.title.$error.maxlength">
-                            Your title must be less than 100 characters!
+                            <div class="alert alert-danger" role="alert">Your title must be less than 100 characters!</div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    Point Value:
-                    <input type="number" name="pointValue" ng-min="0" required="required" ng-model="survey.pointValue" />
+                    <p>Point Value:</p>
+                    <input type="number" name="pointValue" ng-min="0" required="required" ng-model="vm.survey.pointValue" />
                     <div ng-if="form.pointValue.$touched">
                         <div ng-if="form.pointValue.$error.required">
-                            A point value is required!
+                            <div class="alert alert-danger" role="alert">A point value is required!</div>
                         </div>
                         <div ng-if="form.pointValue.$error.min">
-                            The point value must be greater than 0!
+                            <div class="alert alert-danger" role="alert">The point value must be greater than 0!</div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    Description:
-                    <input type="text" name="description" ng-maxlength="500" required="required" ng-model="survey.description" />
+                    <p>Description:</p>
+                    <input type="text" name="description" ng-maxlength="500" required="required" ng-model="vm.survey.description" />
                     <div ng-if="form.description.$touched">
                         <div ng-if="form.description.$error.required">
-                            A description is required!
+                            <div class="alert alert-danger" role="alert">A description is required!</div>
                         </div>
                         <div ng-if="form.description.$error.maxlength">
-                            A description must be less than 500 characters!
+                            <div class="alert alert-danger" role="alert">A description must be less than 500 characters!</div>
                         </div>
                     </div>
                 </div>
-                <div ng-repeat="question in questions">
-                    <input type="text" ng-model="question.q">
+                <div ng-repeat="question in vm.survey.questions">
+                    <p>Add a New Question:</p>
+                    <input type="text" ng-model="question.title">
+                    <div ng-if="question.title.$touched">
+                        <div ng-if="question.title.$error.required">
+                            <div class="alert alert-danger" role="alert">At least one question is required!</div>
+                        </div>
+                    </div>
                 </div>
+                <br>
                 <input type="submit" id="submit" value="Submit" />
             </form>
-            <button ng-click="survey.add()">New Question</button>
+            <br>
+            <button ng-click="vm.add()">New Question</button>
+            
+            <div ng-repeat= "completeSurvey in vm.surveys">
+                <p>{{completeSurvey.title}}</p>
+            </div>
         </div>
-        <pre>questions={{questions}}</pre>
-        <!-- <pre>{{ form | json }}</pre> -->
+    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/app/app.js"></script>
