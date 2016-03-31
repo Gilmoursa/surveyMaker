@@ -11,15 +11,9 @@
     <div ng-app="app" class="app">
         <div ng-controller="FormController as survey">
             <form name="form">
-                <!-- <pre>{{ form | json }}</pre> -->
                 <div>
                     Title:
-                    <input
-                        type="text"
-                        name="title"
-						ng-maxlength="100"
-                        required="required"
-                        ng-model="survey.title" />
+                    <input type="text" name="title" ng-maxlength="100" required="required" ng-model="survey.title" />
                     <div ng-if="form.title.$touched">
                         <div ng-if="form.title.$error.required">
                             A title is required!
@@ -30,14 +24,8 @@
                     </div>
                 </div>
                 <div>
-                    Point Value: 
-                    <input
-                        type="number"
-                        name="pointValue"
-                        ng-min="0"
-                        required="required"
-                        ng-model="survey.pointValue" />
-
+                    Point Value:
+                    <input type="number" name="pointValue" ng-min="0" required="required" ng-model="survey.pointValue" />
                     <div ng-if="form.pointValue.$touched">
                         <div ng-if="form.pointValue.$error.required">
                             A point value is required!
@@ -48,14 +36,8 @@
                     </div>
                 </div>
                 <div>
-                    Description: 
-                    <input
-                        type="text"
-                        name="description"
-                        ng-maxlength="500"
-                        required="required"
-                        ng-model="survey.description" />
-
+                    Description:
+                    <input type="text" name="description" ng-maxlength="500" required="required" ng-model="survey.description" />
                     <div ng-if="form.description.$touched">
                         <div ng-if="form.description.$error.required">
                             A description is required!
@@ -65,13 +47,22 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    Question:
+                    <input type="text" name="question" required="required" ng-model="survey.question" />
+                    <div ng-if="form.question.$touched">
+                        <div ng-if="form.question.$error.required">
+                            A question is required!
+                        </div>
+                    </div>
+                </div>
+                <pre>{{ form | json }}</pre>
             </form>
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/controllers/FormController.js"></script>
-
 </body>
+
 </html>
